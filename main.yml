@@ -1,59 +1,62 @@
 ---
-- name: Configure DNS
-  hosts:
-    - elk-server
-  remote_user: root
-  tasks:
-    - name: Adding Shecan DNS Nameserver to /etc/resolv.conf
-      include: ./dns/add.yml
+# - name: Configure DNS
+#   hosts:
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     - name: Adding Shecan DNS Nameserver to /etc/resolv.conf
+#       include: ./dns/add.yml
 
 # ------------------------------------------------------------------------------
 
-- name: Install Docker
-  hosts:
-    - elk-server
-  remote_user: root
-  tasks:
-    - name: Install Docker on Ubuntu
-      include: ./docker/install.yml
-      when: (ansible_facts['distribution'] == "Ubuntu")
+# - name: Install Docker
+#   hosts:
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     - name: Install Docker on Ubuntu
+#       include: ./docker/install.yml
+#       when: (ansible_facts['distribution'] == "Ubuntu")
 
-  handlers:
-    - name: restart docker
-      service:
-        name: docker
-        state: restarted
-# ------------------------------------------------------------------------------
-
-- name: Install Java 8
-  hosts:
-    - elk-server
-  remote_user: root
-  tasks:
-    - name: Install Java 8 on Ubuntu
-      include: ./java/install.yml
-      when: (ansible_facts['distribution'] == "Ubuntu")
+#   handlers:
+#     - name: restart docker
+#       service:
+#         name: docker
+#         state: restarted
 
 # ------------------------------------------------------------------------------
 
-- name: Install Elasticsearch
-  hosts:
-    - elk-server
-  remote_user: root
-  tasks:
-    - name: Install Elasticsearch on Ubuntu
-      include: ./elastic/install.yml
-      when: (ansible_facts['distribution'] == "Ubuntu")
+# - name: Install Java 8
+#   hosts:
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     - name: Install Java 8 on Ubuntu
+#       include: ./java/install.yml
+#       when: (ansible_facts['distribution'] == "Ubuntu")
 
 # ------------------------------------------------------------------------------
 
-- name: Install And Configure Kibana
-  hosts:
-    - elk-server
-  remote_user: root
-  tasks:
-    - name: Install And Configure Kibana on Ubuntu
-      include: ./kibana/install.yml
-      when: (ansible_facts['distribution'] == "Ubuntu")
+# - name: Install Elasticsearch
+#   hosts:
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     - name: Install Elasticsearch on Ubuntu
+#       include: ./elastic/install.yml
+#       when: (ansible_facts['distribution'] == "Ubuntu")
+
+# ------------------------------------------------------------------------------
+
+# - name: Install And Configure Kibana
+#   hosts:
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     - name: Install And Configure Kibana on Ubuntu
+#       include: ./kibana/install.yml
+#       when: (ansible_facts['distribution'] == "Ubuntu")
+
+# ------------------------------------------------------------------------------
 
 ...
