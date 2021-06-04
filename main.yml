@@ -23,6 +23,16 @@
       service:
         name: docker
         state: restarted
+# ------------------------------------------------------------------------------
+
+- name: Install Java 8
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install Java 8 on Ubuntu
+      include: ./java/install.yml
+      when: (ansible_facts['distribution'] == "Ubuntu")
 
 # ------------------------------------------------------------------------------
 
