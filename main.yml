@@ -1,0 +1,28 @@
+---
+- name: Configure DNS
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Adding Shecan DNS Nameserver to /etc/resolv.conf
+      include: ./dns/add.yml
+
+# ------------------------------------------------------------------------------
+
+- name: Install Docker
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install Docker on Ubuntu
+      include: ./docker/install.yml
+      when: (ansible_facts['distribution'] == "Ubuntu")
+
+  handlers:
+    - name: restart docker
+      service:
+        name: docker
+        state: restarted
+
+
+...
