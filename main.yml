@@ -26,4 +26,24 @@
 
 # ------------------------------------------------------------------------------
 
+- name: Install Elasticsearch
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install Elasticsearch on Ubuntu
+      include: ./elastic/install.yml
+      when: (ansible_facts['distribution'] == "Ubuntu")
+
+# ------------------------------------------------------------------------------
+
+- name: Install And Configure Kibana
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install And Configure Kibana on Ubuntu
+      include: ./kibana/install.yml
+      when: (ansible_facts['distribution'] == "Ubuntu")
+
 ...
