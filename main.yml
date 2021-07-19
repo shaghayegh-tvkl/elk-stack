@@ -72,8 +72,8 @@
     - elk-server
   remote_user: root
   tasks:
-    - name: Install Nginx  
-      include: ./nginx/install.yml
+    # - name: Install Nginx  
+    #   include: ./nginx/install.yml
     - name: Configure Nginx  
       include: ./nginx/config.yml
      
