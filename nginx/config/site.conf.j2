@@ -34,7 +34,7 @@ server {
         proxy_pass         "http://37.152.183.117:8002/user/";
     }
 
-        location /users/ {
+    location /users/ {
         proxy_set_header   X-Forwarded-For $remote_addr;
         proxy_set_header   Host $http_host;
         proxy_pass         "http://37.152.183.117:8002/users/";
@@ -77,12 +77,6 @@ server {
         proxy_set_header   X-Forwarded-For $remote_addr;
         proxy_set_header   Host $http_host;
         proxy_pass         "http://37.152.183.117:8002/comment/";
-    }
-
-    location /comments/ {
-        proxy_set_header   X-Forwarded-For $remote_addr;
-        proxy_set_header   Host $http_host;
-        proxy_pass         "http://37.152.183.117:8002/comments/";
     }
 
     location /comments/ {
