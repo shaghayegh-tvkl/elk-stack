@@ -1,11 +1,19 @@
 ---
-# - name: Configure DNS
-#   hosts:
-#     - elk-server
-#   remote_user: root
-#   tasks:
-#     - name: Adding Shecan DNS Nameserver to /etc/resolv.conf
-#       include: ./dns/add.yml
+- name: Configure DNS
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: one
+      lineinfile:
+        path: /etc/resolv.conf
+        insertbefore: BOF
+        line: 'nameserver 185.51.200.2'
+
+    - name: two
+      lineinfile:
+        path: /etc/resolv.conf
+        insertbefore: BOF
+        line: 'nameserver 178.22.122.100'
 
 # ------------------------------------------------------------------------------
 
@@ -58,5 +66,27 @@
 #       when: (ansible_facts['distribution'] == "Ubuntu")
 
 # ------------------------------------------------------------------------------
+
+- name: Install Nginx
+  hosts: 
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install Nginx  
+      include: ./nginx/install.yml
+    - name: Configure Nginx  
+      include: ./nginx/config.yml
+     
+  handlers:
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
 
 ...
