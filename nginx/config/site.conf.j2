@@ -15,6 +15,77 @@ server {
         proxy_pass         "http://37.152.183.117:8001/search/";
     }
 
+    location /book/ {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://37.152.183.117:8002/books/";
+    }
+
+
+    location /books/ {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://37.152.183.117:8002/books/";
+    }
+
+    location /user/ {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://37.152.183.117:8002/books/";
+    }
+
+        location /users/ {
+        proxy_set_header   X-Forwarded-For $remote_addr;
+        proxy_set_header   Host $http_host;
+        proxy_pass         "http://37.152.183.117:8002/books/";
+    }
+
+
+    # location /update-user/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+    # location /remove-user/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+
+    # location /update-book/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+
+    # location /remove-book/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+    # location /keyword/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+    # location /comment/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+    # location /comments/ {
+    #     proxy_set_header   X-Forwarded-For $remote_addr;
+    #     proxy_set_header   Host $http_host;
+    #     proxy_pass         "http://37.152.183.117:8002/books/";
+    # }
+
+
 
 
 }
