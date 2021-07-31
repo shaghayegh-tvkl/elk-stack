@@ -1,6 +1,6 @@
 - name: Install Docker Module for Python
   pip:
-    name: docker
+    name: docker-py
 - name: Pull flog Docker image
   docker_image:
     name: "mingrammer/flog"
