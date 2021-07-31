@@ -67,26 +67,35 @@
 
 # ------------------------------------------------------------------------------
 
-- name: Install Nginx
+# - name: Install Nginx
+#   hosts: 
+#     - elk-server
+#   remote_user: root
+#   tasks:
+#     # - name: Install Nginx  
+#     #   include: ./nginx/install.yml
+#     - name: Configure Nginx  
+#       include: ./nginx/config.yml
+     
+#   handlers:
+#     - name: Start Nginx
+#       service:
+#         name: nginx
+#         state: started
+
+#     - name: Restart Nginx
+#       service:
+#         name: nginx
+#         state: restarted
+
+- name: Install Flog
   hosts: 
     - elk-server
   remote_user: root
   tasks:
-    # - name: Install Nginx  
-    #   include: ./nginx/install.yml
-    - name: Configure Nginx  
-      include: ./nginx/config.yml
-     
-  handlers:
-    - name: Start Nginx
-      service:
-        name: nginx
-        state: started
+    - name: Install Flog  
+      include: ./flog/install.yml
 
-    - name: Restart Nginx
-      service:
-        name: nginx
-        state: restarted
 
 
 ...
