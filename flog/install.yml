@@ -1,7 +1,6 @@
 - name: Pull flog Docker image
   docker_image:
     name: "mingrammer/flog"
-    source: pull
 
 - name: Create flog containers
   docker_container:
