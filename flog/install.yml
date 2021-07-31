@@ -1,11 +1,11 @@
 - name: Pull flog Docker image
-      docker_image:
-        name: "mingrammer/flog"
-        source: pull
+  docker_image:
+    name: "mingrammer/flog"
+    source: pull
 
 - name: Create flog containers
-      docker_container:
-        name: "flog-container"
-        image: "mingrammer/flog"
-        command: "log -t log -f apache_combined -o web/log/apache.log -b 10485760 -p 1048576"
-        state: present
+  docker_container:
+    name: "flog-container"
+    image: "mingrammer/flog"
+    command: "log -t log -f apache_combined -o web/log/apache.log -b 10485760 -p 1048576"
+    state: present
