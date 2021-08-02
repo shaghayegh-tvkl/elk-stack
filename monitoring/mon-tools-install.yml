@@ -1,0 +1,32 @@
+- name: Copy compose file
+  ansible.builtin.copy:
+    src: ./docker-compose.yml
+    dest: /root/docker-compose.yml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Create Prometheus Volume Mount Point
+  command: mkdir -p /prometheus
+
+- name: Create Prometheus Config Mount Point
+  command: mkdir -p /etc/prometheus
+
+- name: Give Prometheus Config Mount Point Permission
+  command: chmod 775 /etc/prometheus
+
+- name: Create Grafana Volume Mount Point
+  command: mkdir -p /var/lib/grafana
+
+- name: Give Grafana Volume Mount Point Permission
+  command: chmod 775 /var/lib/grafana
+
+
+- name: Create Prometheus Config File
+  ansible.builtin.copy:
+    src: ./prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+
+
+- name: Up Docker Containers
+  command: chdir=/root docker-compose up -d
