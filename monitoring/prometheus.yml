@@ -23,25 +23,15 @@ scrape_configs:
     static_configs:
          - targets: ['project:9114']
 
-  - job_name: 'Libvirt'
+  - job_name: 'Logstash'
     scrape_interval: 120s
     static_configs:
-         - targets: ['virtualization-2:9177','virtualization-1:9177']
-
-  - job_name: 'Redis'
-    scrape_interval: 120s
-    static_configs:
-         - targets: ['virtualization-manager:9121']
-
-  - job_name: 'Postgres'
-    scrape_interval: 120s
-    static_configs:
-         - targets: ['virtualization-manager:9187']
+         - targets: ['project:9198']
 
   - job_name: 'Node Exporter'
     scrape_interval: 120s
     static_configs:
-         - targets: ['api-1:9100','api-2:9100','virtualization-1:9100','virtualization-2:9100','virtualization-manager:9100','manager-node:9100']
+         - targets: ['project:9100']
 
 
 alerting:
