@@ -14,22 +14,22 @@ rule_files:
 
 scrape_configs:
   - job_name: 'prometheus'
-    scrape_interval: 120s
+    scrape_interval: 20s
     static_configs:
         - targets: ['localhost:9090']
 
   - job_name: 'Elasticsearch'
-    scrape_interval: 120s
+    scrape_interval: 20s
     static_configs:
          - targets: ['localhost:9114']
 
   - job_name: 'Logstash'
-    scrape_interval: 120s
+    scrape_interval: 20s
     static_configs:
          - targets: ['localhost:9198']
 
   - job_name: 'Node Exporter'
-    scrape_interval: 120s
+    scrape_interval: 20s
     static_configs:
          - targets: ['localhost:9100']
 
