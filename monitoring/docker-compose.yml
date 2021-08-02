@@ -38,3 +38,11 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=MYPASSWORT
       - GF_USERS_ALLOW_SIGN_UP=false
+
+  elasticsearch_exporter:
+    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
+    command:
+      - '--es.uri=http://localhost:9200'
+    restart: always
+    ports:
+      - "9114:9114"
