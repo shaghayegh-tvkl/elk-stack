@@ -21,6 +21,8 @@ services:
       - 9100
     ports:
       - 9100:9100
+    network_mode: "host"
+
 
   
   grafana:
