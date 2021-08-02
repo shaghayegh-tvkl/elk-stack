@@ -46,3 +46,9 @@ services:
     restart: always
     ports:
       - "9114:9114"
+
+  elasticsearch_exporter:
+    image: bitnami/logstash-exporter:latest
+    restart: always
+    ports:
+      - "9198:9198" 
