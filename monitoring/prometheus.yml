@@ -16,22 +16,22 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 120s
     static_configs:
-        - targets: ['project:9090']
+        - targets: ['localhost:9090']
 
   - job_name: 'Elasticsearch'
     scrape_interval: 120s
     static_configs:
-         - targets: ['project:9114']
+         - targets: ['localhost:9114']
 
   - job_name: 'Logstash'
     scrape_interval: 120s
     static_configs:
-         - targets: ['project:9198']
+         - targets: ['localhost:9198']
 
   - job_name: 'Node Exporter'
     scrape_interval: 120s
     static_configs:
-         - targets: ['project:9100']
+         - targets: ['localhost:9100']
 
 
 alerting:
