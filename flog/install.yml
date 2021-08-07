@@ -1,10 +1,20 @@
-- name: Pull flog Docker image
-  docker_image:
-    name: "mingrammer/flog"
+- name: Copy compose file
+  ansible.builtin.copy:
+    src: ./docker-compose.yml
+    dest: /root/docker-compose.yml
+    owner: root
+    group: root
+    mode: "0644"
 
-- name: Create flog containers
-  docker_container:
-   name: "flog-container"
-   image: "mingrammer/flog"
-   command: "while(true){ log -t log -f apache_combined -o web/log/apache.log -b 10485760 -p 1048576 }"
-   state: present
+- name: Create log Volume Mount Point
+  command: mkdir -p  web/log/
+
+- name: Create Prometheus Config Mount Point
+  command: mkdir -p /etc/prometheus
+
+- name: Give log  Mount Point Permission
+  command: chmod 775  web/log/
+
+
+- name: Up Docker Containers
+  command: chdir=/root docker-compose up -d
