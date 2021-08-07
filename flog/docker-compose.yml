@@ -3,7 +3,7 @@ services:
   flog:
     image:  mingrammer/flog
     container_name: flog
-    restart: never
+    restart: on-failure
     volumes:
       - /opt/web/log/:/opt/web/log
     command:
