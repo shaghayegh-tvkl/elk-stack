@@ -5,6 +5,6 @@ services:
     container_name: flog
     restart: unless-stopped
     volumes:
-      - web/log/:web/log
+      - /opt/web/log/:/opt/web/log
     command:
-      - 'flog -t log -f apache_combined -o web/log/apache.log -b 10485760 -p 1048576'
+      - 'flog -t log -f apache_combined -o /opt/web/log/apache.log -b 10485760 -p 1048576'

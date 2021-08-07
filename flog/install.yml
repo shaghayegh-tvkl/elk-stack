@@ -7,13 +7,11 @@
     mode: "0644"
 
 - name: Create log Volume Mount Point
-  command: mkdir -p  web/log/
+  command: mkdir -p  /opt/web/log/
 
-- name: Create Prometheus Config Mount Point
-  command: mkdir -p /etc/prometheus
 
 - name: Give log  Mount Point Permission
-  command: chmod 775  web/log/
+  command: chmod 775  /opt/web/log/
 
 
 - name: Up Docker Containers
