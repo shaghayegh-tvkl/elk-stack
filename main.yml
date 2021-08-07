@@ -88,14 +88,14 @@
 #         name: nginx
 #         state: restarted
 
-# - name: Install Flog
-#   hosts: 
-#     - elk-server
-#   remote_user: root
-#   tasks:
-#     - name: Install Flog  
-#       include: ./flog/install.yml
-# ------------------------------
+- name: Install Flog
+  hosts: 
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install Flog  
+      include: ./flog/install.yml
+
 - name: Monitoring
   hosts: 
     - elk-server
