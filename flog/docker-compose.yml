@@ -1,6 +1,6 @@
 version: '3'
 services:
-  prometheus:
+  flog:
     image:  mingrammer/flog
     container_name: flog
     restart: unless-stopped
