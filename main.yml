@@ -55,7 +55,15 @@
 #       when: (ansible_facts['distribution'] == "Ubuntu")
 
 # ------------------------------------------------------------------------------
-
+- name: Install Logstash
+  hosts:
+    - elk-server
+  remote_user: root
+  tasks:
+    - name: Install logstash on Ubuntu
+      include: ./logstash/install.yml
+      when: (ansible_facts['distribution'] == "Ubuntu")
+# ------------------------------------------------------------------------------ 
 # - name: Install And Configure Kibana
 #   hosts:
 #     - elk-server
